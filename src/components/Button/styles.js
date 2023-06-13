@@ -8,7 +8,7 @@ export const StyledButton = styled.button`
         small ? 'var(--grey-3)' :
         disabled ? 'var(--primary-disabled)' : 'var(--primary)'
     };
-    ${({link}) => link ? 'padding: 0;' : 'padding: 10px 20px;'}
+    padding: 10px 20px;
     border-radius: 5px;
 
     font-size: 1rem;
@@ -24,12 +24,5 @@ export const StyledButton = styled.button`
             small ? 'background-color: var(--grey-2);' :
             disabled ? '' : 'background-color: var(--primary-focus);'
         };
-    }
-
-    a{
-        width: 100%;
-        height: 100%;
-        padding: 10px 20px;
-        display: block;
     }
 `
