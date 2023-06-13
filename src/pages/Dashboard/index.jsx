@@ -19,8 +19,6 @@ import { ModalEdit } from "../../components/ModalEditTech";
 
 export function Dashboard() {
 
-    console.log('update')
-
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
     const [updateTechs, setUpdateTechs] = useState(true)
@@ -30,7 +28,9 @@ export function Dashboard() {
     const navigate = useNavigate()
 
     function endSession() {
-        localStorage.clear()
+        localStorage.removeItem('@TOKEN')
+        localStorage.removeItem('@USERID')
+        setUser(null)
         navigate('/')
     }
 
