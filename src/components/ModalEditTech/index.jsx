@@ -37,6 +37,23 @@ export const ModalEdit = forwardRef(({setUpdateTechs, updateTechs, tech}, ref) =
         }
     }
 
+    function deleteTech() {
+        try {
+            kenzieHub.delete('users/techs/' + tech.id, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('@TOKEN')}`
+                }
+            })
+            toast.success('Tecnologia deletada', {theme: 'dark'})
+        } catch (error) {
+            toast.error('Ops! Algo deu errado', {theme: 'dark'})
+        }
+        finally{
+            setUpdateTechs((updateTechs ? false : true))
+            ref.current.close()
+        }
+    }
+
     
     return(
         <StyledDialog ref={ref} onClick={() => ref.current.close()}>
@@ -53,7 +70,7 @@ export const ModalEdit = forwardRef(({setUpdateTechs, updateTechs, tech}, ref) =
                     <Select options={['Iniciante', 'Intermediário', 'Avançado']} label='Status' register={register('status')} />
                     <StyledBottomForm>
                         <Button type='submit'>Salvar alterações</Button>
-                        <Button grey >Excluir</Button>
+                        <Button grey type='button' onClick={deleteTech} >Excluir</Button>
                     </StyledBottomForm>
                 </Form>
             </StyledModalInterior>

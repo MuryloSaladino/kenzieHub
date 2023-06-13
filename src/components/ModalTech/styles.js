@@ -22,6 +22,8 @@ export const StyledModalInterior = styled.div`
     border-radius: 5px;
     position: relative;
 
+    animation: fadeIn 0.3s;
+
     > header{
         width: 100%;
         padding: 14px 20px;
