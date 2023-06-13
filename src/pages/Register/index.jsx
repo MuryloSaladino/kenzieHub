@@ -12,8 +12,11 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { registerSchema } from "./registerSchema";
 
 import { kenzieHub } from "../../service/api";
+import { useNavigate } from "react-router-dom";
 
 export function RegisterPage() {
+
+    const navigate = useNavigate()
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(registerSchema),
@@ -32,6 +35,7 @@ export function RegisterPage() {
         try {
             await kenzieHub.post('/users', newUser)
             toast.success('Conta criada com sucesso!', {theme: "dark"})
+            navigate('/')
         } catch (err) {
             toast.error('Ops! Algo deu errado', {theme: "dark"})
         }
