@@ -15,17 +15,13 @@ export function UserProvider({children}) {
             const userID = localStorage.getItem('@USERID')
 
             if(token && userID) {
-                try {
-                    const {data} = await kenzieHub.get('profile', {
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        }
-                    })
-                    setUser(data.id)
-                    navigate('/dashboard')
-                } catch (error) {
-                    navigate('/')
-                }
+                const {data} = await kenzieHub.get('profile', {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                setUser(data.id)
+                navigate('/dashboard')
             }
         }
         autoLogin()
