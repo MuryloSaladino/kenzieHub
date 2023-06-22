@@ -12,10 +12,13 @@ import { loginSchema } from "./loginSchema";
 import { useNavigate } from "react-router-dom";
 
 import { kenzieHub } from "../../service/api";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
 
 export function LoginPage() {
 
     const navigate = useNavigate()
+    const { setUser } = useContext(UserContext)
 
     const { handleSubmit, register, formState: { errors } } = useForm({
         resolver: zodResolver(loginSchema)
@@ -24,9 +27,10 @@ export function LoginPage() {
     const submit = async (formData) => {
         try {
             const {data} = await kenzieHub.post('/sessions', formData)
-            toast.success('Login realizado com sucesso', {theme: 'dark'})
+            setUser(data.user.id)
             localStorage.setItem('@TOKEN', data.token)
             localStorage.setItem('@USERID', data.user.id)
+            toast.success('Login realizado com sucesso', {theme: 'dark'})
             navigate('/dashboard')
         } catch (err) {
             toast.error('Ops! Email ou senha incorretos', {theme: 'dark'})

@@ -1,42 +1,52 @@
-import { forwardRef } from "react";
 import { StyledDialog, StyledModalInterior } from "./styles";
-import { Text, Title2, Title3 } from "../../styles/typography";
-import { Form } from "../Form";
-import { Input } from "../Input";
-import { Select } from "../Select";
-import { Button } from "../Button";
-import { useForm } from "react-hook-form";
+import { Text, Title2, Title3 } from "../../../../styles/typography";
+import { Form } from "../../../../components/Form";
+import { Input } from "../../../../components/Input";
+import { Select } from "../../../../components/Select";
+import { Button } from "../../../../components/Button";
+
 import { newTechSchema } from "./newTechSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { kenzieHub } from "../../service/api";
 import { toast } from "react-toastify";
 
-export const Modal = forwardRef(({updateTechs, setUpdateTechs}, ref) => {
+import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { TechContext } from "../../../../providers/TechContext";
+
+import { kenzieHub } from "../../../../service/api";
+
+export function Modal() {
+
+    const {
+        updateTechs,
+        setUpdateTechs,
+        modalRef,
+    } = useContext(TechContext)
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(newTechSchema),
     })
 
-    const submit = (formData) => {
+    const submit = async (formData) => {
         try {
-            kenzieHub.post('users/techs', formData, {
+            await kenzieHub.post('users/techs', formData, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('@TOKEN')}`
                 }
             })
             toast.success('Tecnologia cadastrada', {theme: 'dark'})
-        } catch (err) {
+        }catch (err) {
             toast.error('Ops! Algo deu errado', {theme: 'dark'})
         }
         finally{
             setUpdateTechs((updateTechs ? false : true))
-            ref.current.close()
+            modalRef.current.close()
         }
     }
 
     
     return(
-        <StyledDialog ref={ref} onClick={() => ref.current.close()}>
+        <StyledDialog ref={modalRef} onClick={() => ref.current.close()}>
             <StyledModalInterior onClick={(e) => e.stopPropagation()}>
                 <header>
                     <Title3>Cadastrar Tecnologia</Title3>
@@ -53,4 +63,4 @@ export const Modal = forwardRef(({updateTechs, setUpdateTechs}, ref) => {
             </StyledModalInterior>
         </StyledDialog>
     )
-})
+}
