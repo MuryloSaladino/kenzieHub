@@ -10,7 +10,7 @@ export function TechProvider({children}) {
     const [userData, setUserData] = useState(null)
     const [loading, setLoading] = useState(true)
     const [updateTechs, setUpdateTechs] = useState(false)
-    const [currentTech, setCurrentTech] = useState({title: '', status: ''})
+    const [currentTech, setCurrentTech] = useState({title: "", status: ""})
     const modalRef = useRef(null)
     const modalEditRef = useRef(null)
     const navigate = useNavigate()
@@ -18,14 +18,14 @@ export function TechProvider({children}) {
     useEffect(() => {
         async function checkAuth() {
             try {
-                const {data} = await kenzieHub.get('profile', {
+                const {data} = await kenzieHub.get("profile", {
                     headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('@TOKEN')}`
+                        "Authorization": `Bearer ${localStorage.getItem("@TOKEN")}`
                     }
                 })
                 setUserData(data)
             } catch (error) {
-                toast.error('Ops! Algo deu errado', {theme: 'dark'})
+                toast.error("Ops! Algo deu errado", {theme: "dark"})
             }
             finally{
                 setLoading(false)

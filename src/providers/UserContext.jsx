@@ -11,27 +11,27 @@ export function UserProvider({children}) {
 
     useEffect(() => {
         async function autoLogin() {
-            const token = localStorage.getItem('@TOKEN')
-            const userID = localStorage.getItem('@USERID')
+            const token = localStorage.getItem("@TOKEN")
+            const userID = localStorage.getItem("@USERID")
 
             if(token && userID) {
-                const {data} = await kenzieHub.get('profile', {
+                const {data} = await kenzieHub.get("profile", {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
                 })
                 setUser(data.id)
-                navigate('/dashboard')
+                navigate("/dashboard")
             }
         }
         autoLogin()
     }, [])
 
     function endSession() {
-        localStorage.removeItem('@TOKEN')
-        localStorage.removeItem('@USERID')
+        localStorage.removeItem("@TOKEN")
+        localStorage.removeItem("@USERID")
         setUser(null)
-        navigate('/')
+        navigate("/")
     }
 
     return(

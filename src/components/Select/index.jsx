@@ -1,6 +1,6 @@
 import { StyledInputContainer, StyledLabel } from "../Input/styles";
 import { StyledSelect } from "./styles";
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from "uuid"
 
 export function Select({options, placeholder, label, register}) {
     return(

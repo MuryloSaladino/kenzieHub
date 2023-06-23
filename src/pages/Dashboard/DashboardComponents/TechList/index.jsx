@@ -1,7 +1,7 @@
 import { Button } from "../../../../components/Button";
 import { Title2, Title3 } from "../../../../styles/typography";
 
-import plus from '../../../../assets/plus.svg'
+import plus from "../../../../assets/plus.svg"
 
 import { TechCard } from "./TechCard";
 import { StyledTechContainer, StyledTechList } from "./styles";
@@ -9,7 +9,7 @@ import { StyledTechContainer, StyledTechList } from "./styles";
 import { TechContext } from "../../../../providers/TechContext";
 import { useContext } from "react";
 
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 export function TechList() {
 

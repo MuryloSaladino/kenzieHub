@@ -29,14 +29,14 @@ export function Modal() {
 
     const submit = async (formData) => {
         try {
-            await kenzieHub.post('users/techs', formData, {
+            await kenzieHub.post("users/techs", formData, {
                 headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('@TOKEN')}`
+                    "Authorization": `Bearer ${localStorage.getItem("@TOKEN")}`
                 }
             })
-            toast.success('Tecnologia cadastrada', {theme: 'dark'})
+            toast.success("Tecnologia cadastrada", {theme: "dark"})
         }catch (err) {
-            toast.error('Ops! Algo deu errado', {theme: 'dark'})
+            toast.error("Ops! Algo deu errado", {theme: "dark"})
         }
         finally{
             setUpdateTechs((updateTechs ? false : true))
@@ -52,13 +52,13 @@ export function Modal() {
                     <Title3>Cadastrar Tecnologia</Title3>
                 </header>
 
-                <Title2 color='var(--grey-1)' onClick={() => ref.current.close()} >X</Title2>
+                <Title2 color="var(--grey-1)" onClick={() => ref.current.close()} >X</Title2>
 
                 <Form onSubmit={handleSubmit(submit)} >
-                    <Input type='text' label='Nome' placeholder='Digite aqui o nome' register={register('title')} />
+                    <Input type="text" label="Nome" placeholder="Digite aqui o nome" register={register("title")} />
                     {errors.title ? <Text color="var(--grey-1)">{errors.title.message}</Text> : null}
-                    <Select options={['Iniciante', 'Intermediário', 'Avançado']} label='Selecionar Status' register={register('status')} />
-                    <Button type='submit'>Cadastrar Tecnologia</Button>
+                    <Select options={["Iniciante", "Intermediário", "Avançado"]} label="Selecionar Status" register={register("status")} />
+                    <Button type="submit">Cadastrar Tecnologia</Button>
                 </Form>
             </StyledModalInterior>
         </StyledDialog>

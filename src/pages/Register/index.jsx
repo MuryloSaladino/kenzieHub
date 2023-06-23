@@ -33,74 +33,74 @@ export function RegisterPage() {
         }
 
         try {
-            await kenzieHub.post('/users', newUser)
-            toast.success('Conta criada com sucesso!', {theme: "dark"})
-            navigate('/')
+            await kenzieHub.post("/users", newUser)
+            toast.success("Conta criada com sucesso!", {theme: "dark"})
+            navigate("/")
         } catch (err) {
-            toast.error('Ops! Algo deu errado', {theme: "dark"})
+            toast.error("Ops! Algo deu errado", {theme: "dark"})
         }
     }
 
-    const selectOptions = ['Primeiro Módulo', 'Segundo Módulo', 'Terceiro Módulo', 'Quarto Módulo', 'Quinto Módulo', 'Sexto Módulo']
+    const selectOptions = ["Primeiro Módulo", "Segundo Módulo", "Terceiro Módulo", "Quarto Módulo", "Quinto Módulo", "Sexto Módulo"]
 
     return(
         <>
             <StyledMainRegister>
                 <StyledTop>
                     <Logo/>
-                    <Button small link={'/'}>Voltar</Button>
+                    <Button small link={"/"}>Voltar</Button>
                 </StyledTop>                
 
-                <Form onSubmit={handleSubmit(submit)} formName='Crie sua conta' formDescription='Rapido e grátis, vamos nessa'>
+                <Form onSubmit={handleSubmit(submit)} formName="Crie sua conta" formDescription="Rapido e grátis, vamos nessa">
                     <Input
-                        type='text'
-                        placeholder='Digite aqui seu nome'
-                        label='Nome'
-                        register={register('name')}
+                        type="text"
+                        placeholder="Digite aqui seu nome"
+                        label="Nome"
+                        register={register("name")}
                     />
                     {errors.name ? <Text color="var(--grey-1)">{errors.name.message}</Text> : null}
                     <Input
-                        type='email'
-                        placeholder='Digite aqui seu email'
-                        label='Email'
-                        register={register('email')}
+                        type="email"
+                        placeholder="Digite aqui seu email"
+                        label="Email"
+                        register={register("email")}
                     />
                     {errors.email ? <Text color="var(--grey-1)">{errors.email.message}</Text> : null}
                     <Input
-                        type='password'
-                        placeholder='Digite aqui sua senha'
-                        label='Senha'
-                        register={register('password')}
+                        type="password"
+                        placeholder="Digite aqui sua senha"
+                        label="Senha"
+                        register={register("password")}
                     />
                     {errors.password ? <Text color="var(--grey-1)">{errors.password.message}</Text> : null}
                     <Input
-                        type='password'
-                        placeholder='Digite novamente sua senha'
-                        label='Confirmar Senha'
-                        register={register('confirmation')}
+                        type="password"
+                        placeholder="Digite novamente sua senha"
+                        label="Confirmar Senha"
+                        register={register("confirmation")}
                     />
                     {errors.confirmation ? <Text color="var(--grey-1)">{errors.confirmation.message}</Text> : null}
                     <Input
-                        type='text'
-                        placeholder='Fale sobre você'
-                        label='Bio'
-                        register={register('bio')}
+                        type="text"
+                        placeholder="Fale sobre você"
+                        label="Bio"
+                        register={register("bio")}
                     />
                     {errors.bio ? <Text color="var(--grey-1)">{errors.bio.message}</Text> : null}
                     <Input
-                        type='text'
-                        placeholder='Opção de contato'
-                        label='Contato'
-                        register={register('contact')}
+                        type="text"
+                        placeholder="Opção de contato"
+                        label="Contato"
+                        register={register("contact")}
                     />
                     {errors.contact ? <Text color="var(--grey-1)">{errors.contact.message}</Text> : null}
                     <Select
                         options={selectOptions}
-                        label='Selecionar módulo'
-                        register={register('courseLevel')}
+                        label="Selecionar módulo"
+                        register={register("courseLevel")}
                     />
                     <Button
-                        type='submit'
+                        type="submit"
                         disabled={errors.name || errors.email || errors.password || errors.confirmation || errors.bio || errors.contact ? true : false}
                     >Cadastrar</Button>
                 </Form>

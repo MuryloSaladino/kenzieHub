@@ -1,7 +1,7 @@
-import { Text, Title2 } from '../../../../../styles/typography';
+import { Text, Title2 } from "../../../../../styles/typography";
 
-import { TechContext } from '../../../../../providers/TechContext';
-import { useContext } from 'react';
+import { TechContext } from "../../../../../providers/TechContext";
+import { useContext } from "react";
 
 export function TechCard({tech}) {
 

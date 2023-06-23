@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { StyledButton } from "./styles";
-import { grey, primary, small } from './styles.module.css'
+import { grey, primary, small } from "./styles.module.css"
 
 export function Button({ link, children, ...rest}) {
 

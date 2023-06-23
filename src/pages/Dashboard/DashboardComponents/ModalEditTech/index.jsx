@@ -31,14 +31,14 @@ export function ModalEdit () {
 
     const submit = async (formData) => {
         try {
-            await kenzieHub.put('users/techs/' + currentTech.id, formData, {
+            await kenzieHub.put("users/techs/" + currentTech.id, formData, {
                 headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('@TOKEN')}`
+                    "Authorization": `Bearer ${localStorage.getItem("@TOKEN")}`
                 }
             })
-            toast.success('Tecnologia alterada', {theme: 'dark'})
+            toast.success("Tecnologia alterada", {theme: "dark"})
         } catch (err) {
-            toast.error('Ops! Algo deu errado', {theme: 'dark'})
+            toast.error("Ops! Algo deu errado", {theme: "dark"})
         }
         finally{
             setUpdateTechs((updateTechs ? false : true))
@@ -48,14 +48,14 @@ export function ModalEdit () {
 
     async function deleteTech() {
         try {
-            await kenzieHub.delete('users/techs/' + currentTech.id, {
+            await kenzieHub.delete("users/techs/" + currentTech.id, {
                 headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('@TOKEN')}`
+                    "Authorization": `Bearer ${localStorage.getItem("@TOKEN")}`
                 }
             })
-            toast.success('Tecnologia deletada', {theme: 'dark'})
+            toast.success("Tecnologia deletada", {theme: "dark"})
         } catch (error) {
-            toast.error('Ops! Algo deu errado', {theme: 'dark'})
+            toast.error("Ops! Algo deu errado", {theme: "dark"})
         }
         finally{
             setUpdateTechs((updateTechs ? false : true))
@@ -71,15 +71,15 @@ export function ModalEdit () {
                     <Title3>Tecnologia Detalhes</Title3>
                 </header>
 
-                <Title2 color='var(--grey-1)' onClick={() => modalEditRef.current.close()} >X</Title2>
+                <Title2 color="var(--grey-1)" onClick={() => modalEditRef.current.close()} >X</Title2>
 
                 <Form onSubmit={handleSubmit(submit)} >
-                    <Input type='text' label='Nome do projeto' value={currentTech.title} readonly />
+                    <Input type="text" label="Nome do projeto" value={currentTech.title} readonly />
                     {errors.title ? <Text color="var(--grey-1)">{errors.title.message}</Text> : null}
-                    <Select options={['Iniciante', 'Intermediário', 'Avançado']} label='Status' register={register('status')} />
+                    <Select options={["Iniciante", "Intermediário", "Avançado"]} label="Status" register={register("status")} />
                     <StyledBottomForm>
-                        <Button type='submit'>Salvar alterações</Button>
-                        <Button grey type='button' onClick={deleteTech} >Excluir</Button>
+                        <Button type="submit">Salvar alterações</Button>
+                        <Button grey type="button" onClick={deleteTech} >Excluir</Button>
                     </StyledBottomForm>
                 </Form>
             </StyledModalInterior>

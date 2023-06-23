@@ -15,5 +15,5 @@ export const StyledLoadingBar = styled.div`
     animation: wave 1s linear infinite;
     border-radius: 20px;
 
-    animation-delay: ${({delay}) => delay + 's'};
+    animation-delay: ${({delay}) => delay + "s"};
 `
